@@ -15,4 +15,4 @@ jobs:
     name: Testing Action
     steps:
       - name: Run
-        uses: quay.io/opdev/preflight:stable
+        uses: docker://quay.io/opdev/preflight:stable
