@@ -30,7 +30,6 @@ jobs:
           LOG_LEVEL: foo
         run: |
           preflight check container \
-            --submit \
             --loglevel "${LOG_LEVEL}" \
             quay.io/opdev/simple-demo-operator:latest
           ls -lah
