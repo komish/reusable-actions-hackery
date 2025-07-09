@@ -1,0 +1,12 @@
+# action.yml
+name: 'Run Container Action'
+description: ''
+inputs:
+  image:
+    description: 'The container image to scan'
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+  - ${{ inputs.image }}

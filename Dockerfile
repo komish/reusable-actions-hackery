@@ -1,0 +1,1 @@
+FROM quay.io/opdev/preflight:stable
