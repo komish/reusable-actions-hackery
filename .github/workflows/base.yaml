@@ -6,6 +6,6 @@ jobs:
     name: Testing Action
     steps:
       - name: Run
-        uses: ${{ github.repository }}@latest
+        uses: komish/reusable-actions-hackery@latest
         with:
           image: quay.io/opdev/simple-demo-operator:latest
