@@ -1,15 +1,6 @@
 on: [push, workflow_dispatch]
 
 jobs:
-  # example_job:
-  #   runs-on: ubuntu-latest
-  #   name: Testing Action
-  #   steps:
-  #     - name: Run
-  #       uses: komish/reusable-actions-hackery@main
-  #       with:
-  #         image: quay.io/opdev/simple-demo-operator:latest
-
   example_job_container:
     runs-on: ubuntu-latest
     name: Testing Action
@@ -19,9 +10,15 @@ jobs:
         run: |
           preflight --version
       - name: Check Container
-        env:
-          PFLT_LOGLEVEL: trace
         run: |
           preflight check container \
             quay.io/opdev/simple-demo-operator:latest
           ls -lah
+      - name: upload log
+        uses: actions/upload-artifact@v4
+        with:
+          name: preflight.log
+          path: preflight.log
+          if-no-files-found: error
+          retention-days: 1
+        
