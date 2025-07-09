@@ -27,7 +27,7 @@ jobs:
           preflight --version
       - name: Check Container
         env:
-          LOG_LEVEL: foo
+          LOG_LEVEL: trace
         run: |
           preflight check container \
             --loglevel "${LOG_LEVEL}" \
