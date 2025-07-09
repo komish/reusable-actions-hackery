@@ -6,6 +6,6 @@ jobs:
     name: Testing Action
     steps:
       - name: Run
-        uses: komish/reusable-actions-hackery@latest
+        uses: komish/reusable-actions-hackery@main
         with:
           image: quay.io/opdev/simple-demo-operator:latest
