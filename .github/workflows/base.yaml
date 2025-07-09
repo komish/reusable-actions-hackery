@@ -13,6 +13,12 @@ jobs:
   example_job_container:
     runs-on: ubuntu-latest
     name: Testing Action
+    container: quay.io/opdev/preflight:stable
     steps:
-      - name: Run
-        uses: docker://quay.io/opdev/preflight:stable
+      - name: Show Version
+        run: |
+          preflight --version
+      - name: Check Container
+        run: |
+          preflight check container quay.io/opdev/simple-demo-operator:latest
+          ls -lah
