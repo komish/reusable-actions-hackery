@@ -1,0 +1,11 @@
+on: [push, workflow_dispatch]
+
+jobs:
+  example_job:
+    runs-on: ubuntu-latest
+    name: Testing Action
+    steps:
+      - name: Run
+        uses: ${{ github.repository }}@latest
+        with:
+          image: quay.io/opdev/simple-demo-operator:latest
