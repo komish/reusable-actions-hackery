@@ -9,3 +9,10 @@ jobs:
         uses: komish/reusable-actions-hackery@main
         with:
           image: quay.io/opdev/simple-demo-operator:latest
+
+  example_job_container:
+    runs-on: ubuntu-latest
+    name: Testing Action
+    steps:
+      - name: Run
+        uses: quay.io/opdev/preflight:stable
