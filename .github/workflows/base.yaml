@@ -14,15 +14,23 @@ jobs:
     runs-on: ubuntu-latest
     name: Testing Action
     container: quay.io/opdev/preflight:stable
+    # Environment variables defined here seem to be passed to the steps.
+    # In testing, it doesn't seem that environment variables in the steps make it into the container.
+    # You could potentially add environment variables to the steps and then call them in the run script.
     env:
-      PFLT_PYXIS_API_TOKEN: ${{ secrets.PYXIS_API_TOKEN }}
-      PFLT_CERTIFICATION_COMPONENT_ID: 123456789000
+      # PFLT_PYXIS_API_TOKEN: ${{ secrets.PYXIS_API_TOKEN }}
+      # PFLT_CERTIFICATION_COMPONENT_ID: 123456789000
       PFLT_LOGLEVEL: debug
     steps:
       - name: Show Version
         run: |
           preflight --version
       - name: Check Container
+        env:
+          LOG_LEVEL: foo
         run: |
-          preflight check container --submit quay.io/opdev/simple-demo-operator:latest
+          preflight check container \
+            --submit \
+            --loglevel "${LOG_LEVEL}" \
+            quay.io/opdev/simple-demo-operator:latest
           ls -lah
